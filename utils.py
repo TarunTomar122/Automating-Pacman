@@ -81,7 +81,7 @@ scared_1_w = pygame.image.load('./assets/sprites/ghosts/scared/scared_1_w.png')
 map_img = './assets/maps/original.png'
 maze = np.array(array(map_img))
 
-pallete = pygame.image.load('./assets/maps/pallet.png')
+pallete = pygame.image.load('./assets/maps/pallet2.png')
 
 maze_x = len(maze[0])
 maze_y = len(maze)
