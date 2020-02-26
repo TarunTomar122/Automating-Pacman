@@ -89,7 +89,7 @@ while running:
 
     if event.type == pygame.KEYUP:
         playerMove = 0
-
+    #print(pacman.coordinate)
     create_maze()
 
     if pac_upd == 30:

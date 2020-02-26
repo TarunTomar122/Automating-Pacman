@@ -81,6 +81,8 @@ scared_1_w = pygame.image.load('./assets/sprites/ghosts/scared/scared_1_w.png')
 map_img = './assets/maps/original.png'
 maze = np.array(array(map_img))
 
+pallete = pygame.image.load('./assets/maps/pallet.png')
+
 maze_x = len(maze[0])
 maze_y = len(maze)
 
@@ -152,41 +154,14 @@ def create_maze():
             r = maze[y][x+1]
             if i == 0:
                 screen.blit(path_img, coor_to_px((x, y)))
+            if i == 2:
+                screen.blit(path_img, coor_to_px((x, y)))
 
             if i == 1:
-                if u == 1 and d == 1 and r == 1 and l == 1:
-                    screen.blit(wall_img, coor_to_px((x, y)))
+                screen.blit(wall_img,coor_to_px((x,y)))
 
-                if u == 0 and d == 1 and r == 1 and l == 1:
-                    screen.blit(wall_1000, coor_to_px((x, y)))
-                if u == 1 and d == 0 and r == 1 and l == 1:
-                    screen.blit(wall_0010, coor_to_px((x, y)))
-                if u == 1 and d == 1 and r == 0 and l == 1:
-                    screen.blit(wall_0100, coor_to_px((x, y)))
-                if u == 1 and d == 1 and r == 1 and l == 0:
-                    screen.blit(wall_0001, coor_to_px((x, y)))
-
-                if u == 0 and d == 0 and r == 1 and l == 1:
-                    screen.blit(wall_1010, coor_to_px((x, y)))
-                if u == 1 and d == 0 and r == 0 and l == 1:
-                    screen.blit(wall_0110, coor_to_px((x, y)))
-                if u == 1 and d == 1 and r == 0 and l == 0:
-                    screen.blit(wall_0101, coor_to_px((x, y)))
-                if u == 0 and d == 1 and r == 1 and l == 0:
-                    screen.blit(wall_1001, coor_to_px((x, y)))
-                if u == 1 and d == 0 and r == 1 and l == 0:
-                    screen.blit(wall_0011, coor_to_px((x, y)))
-                if u == 0 and d == 1 and r == 0 and l == 1:
-                    screen.blit(wall_1100, coor_to_px((x, y)))
-
-                if u == 1 and d == 0 and r == 0 and l == 0:
-                    screen.blit(wall_0111, coor_to_px((x, y)))
-                if u == 0 and d == 1 and r == 0 and l == 0:
-                    screen.blit(wall_1101, coor_to_px((x, y)))
-                if u == 0 and d == 0 and r == 1 and l == 0:
-                    screen.blit(wall_1011, coor_to_px((x, y)))
-                if u == 0 and d == 0 and r == 0 and l == 1:
-                    screen.blit(wall_1110, coor_to_px((x, y)))
+            if i == 0:
+                screen.blit(pallete, coor_to_px((x, y)))
 
 
 def get_threshold(inp):

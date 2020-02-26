@@ -47,7 +47,9 @@ class Pacman():
     # Make a function to update pacman
 
     def update(self):
-
+        x, y = self.coordinate
+        if(maze[y][x] == 0):
+            maze[y][x] = 2
         # Pacman Sprite Update
         if self.mouth_open:
             self.sprite = pacman_c
@@ -63,16 +65,16 @@ class Pacman():
         self.mouth_open = ~(self.mouth_open)
 
         i, j = self.next
-        if maze[j][i] == 0:
+        if maze[j][i] == 0 or maze[j][i] == 2:
             self.coordinate = get_block(self.coordinate, self.direction)
         else:
             i, j = get_block(self.coordinate, self.tmpdirection)
-            if maze[j][i] == 0:
+            if maze[j][i] == 0 or maze[j][i] == 2:
                 self.direction = self.tmpdirection
                 self.coordinate = get_block(self.coordinate, self.direction)
 
         self.next = get_block(self.coordinate, self.direction)
-        # screen.blit(self.sprite, coor_to_px(self.coordinate))
+        # screen.blit(self.sprite, coor_to_px(self.coordinate))   
 
     def draw(self):
         screen.blit(self.sprite, coor_to_px(self.coordinate))
@@ -107,13 +109,13 @@ class Ghost():
     def type_node(self):
         poss = []
         i, j = get_block(self.coordinate, self.direction)
-        if maze[j][i] == 0:
+        if maze[j][i] == 0 :
             poss.append(self.direction)
         i, j = get_block(self.coordinate, self.left)
-        if maze[j][i] == 0:
+        if maze[j][i] == 0 or maze[j][i] == 2:
             poss.append(self.left)
         i, j = get_block(self.coordinate, self.right)
-        if maze[j][i] == 0:
+        if maze[j][i] == 0 or maze[j][i] == 2:
             poss.append(self.right)
         # print(poss)
         return poss
@@ -561,5 +563,5 @@ pinky.set_home((2, 26))
 clyde = Clyde(23, 22)
 clyde.set_home((24, 26))
 
-entities = [pacman, blinky, inky, pinky, clyde]
-# entities = [pacman, inky]
+# entities = [pacman, blinky, inky, pinky, clyde]
+entities = [pacman]
